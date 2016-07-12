@@ -1,0 +1,29 @@
+---
+# tasks file for
+
+
+- name: install nginx
+  apt: pkg=nginx state=installed
+
+- name: install conf
+  template: src=site.nginx.conf
+            dest=/etc/nginx/sites-enabled/{{ domain }}.conf
+  notify:
+    restart nginx
+
+- name: stop nginx
+  service:
+    name: nginx
+    state: stopped
+
+- name: install letsencrypt
+  include: letsencrypt.yml
+
+- name: start nginx
+  service:
+    name: nginx
+    state: started
+
+
+
+

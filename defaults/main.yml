@@ -1,0 +1,33 @@
+---
+# defaults file for .
+
+certbot_install_dir: "/opt/certbot/"
+domain: "change.me"
+local_service_port: 8080
+ssl_port: 443
+cert_email: "kenn@ich.net"
+java_storepass: "changeit"
+
+download_dir: "/tmp/"
+
+java_install_location: "/opt/UpSource/latest/internal/java/linux-x64/"
+
+
+letsencrypt_certs:
+  root:
+    link: "https://letsencrypt.org/certs/isrgrootx1.der"
+    file: "isrgrootx1.der"
+  lets-encrypt-x1-cross-signed:
+    link: "https://letsencrypt.org/certs/lets-encrypt-x1-cross-signed.der"
+    file: "lets-encrypt-x1-cross-signed.der"
+  lets-encrypt-x2-cross-signed:
+    link: "https://letsencrypt.org/certs/lets-encrypt-x2-cross-signed.der"
+    file: "lets-encrypt-x2-cross-signed.der"
+  lets-encrypt-x3-cross-signed:
+    link: "https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.der"
+    file: "lets-encrypt-x3-cross-signed.der"
+  lets-encrypt-x4-cross-signed:
+    link: "https://letsencrypt.org/certs/lets-encrypt-x4-cross-signed.der"
+    file: "lets-encrypt-x4-cross-signed.der"
+
+

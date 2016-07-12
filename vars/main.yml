@@ -1,0 +1,4 @@
+---
+# vars file for .
+
+cert_path: "/etc/letsencrypt/live/{{domain}}"
