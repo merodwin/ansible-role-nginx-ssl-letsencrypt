@@ -18,6 +18,8 @@
 
 - name: install letsencrypt
   include: letsencrypt.yml
+  tags:
+    - letsencrypt
 
 - name: start nginx
   service:

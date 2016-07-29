@@ -19,6 +19,10 @@
   command: "{{certbot_install_dir}}/certbot-auto certonly -n --agree-tos --email {{cert_email}} --standalone -d {{domain}}"
   when: certificate.stat.exists == False
 
+- name: renew cert
+  command: "{{certbot_install_dir}}/certbot-auto renew -n --agree-tos --email {{cert_email}} --standalone -d {{domain}}"
+  when: certificate.stat.exists == True
+
 - name: download cacerts
   get_url: url="{{item.value.link}}" dest="{{download_dir}}/{{item.value.file}}"
   with_dict: "{{letsencrypt_certs}}"
