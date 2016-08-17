@@ -20,7 +20,7 @@
   when: certificate.stat.exists == False
 
 - name: renew cert
-  command: "{{certbot_install_dir}}/certbot-auto renew -n --agree-tos --email {{cert_email}} --standalone -d {{domain}}"
+  command: "{{certbot_install_dir}}/certbot-auto renew" 
   when: certificate.stat.exists == True
 
 - name: download cacerts
