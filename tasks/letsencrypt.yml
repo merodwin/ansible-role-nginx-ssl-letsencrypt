@@ -19,18 +19,12 @@
   command: "{{certbot_install_dir}}/certbot-auto certonly -n --agree-tos --email {{cert_email}} --standalone -d {{domain}}"
   when: certificate.stat.exists == False
 
-- name: renew cert
-  command: "{{certbot_install_dir}}/certbot-auto renew" 
-  when: certificate.stat.exists == True
-
-- name: download cacerts
-  get_url: url="{{item.value.link}}" dest="{{download_dir}}/{{item.value.file}}"
-  with_dict: "{{letsencrypt_certs}}"
-
-- name: install cacerts in truststore
-  command: "keytool -importcert  -noprompt -storepass {{java_storepass}} -alias {{item.key}} -keystore {{java_install_location}}/jre/lib/security/cacerts --file {{download_dir}}/{{item.value.file}}"
-  with_dict: "{{letsencrypt_certs}}"
-  ignore_errors: True
-
+- name: renew cert cron entry
+  cron: 
+    name: renew cert
+    weekday: 0
+    minute: 0
+    hour: 0
+    job: /opt/certbot/certbot-auto renew --standalone --pre-hook "service nginx stop" --post-hook "service nginx start"
 
 
