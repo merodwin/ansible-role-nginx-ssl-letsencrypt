@@ -8,6 +8,8 @@ ssl_port: 443
 cert_email: "kenn@ich.net"
 java_storepass: "changeit"
 
+max_upload: 100
+
 download_dir: "/tmp/"
 
 java_install_location: "/opt/UpSource/latest/internal/java/linux-x64/"
